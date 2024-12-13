@@ -41,6 +41,7 @@ public class LoginTest {
 	void TearDown() {
 		driver.quit();
 	}
+	
 //	private static Stream<Arguments> LoginCreds() {
 //	return Stream.of(Arguments.of(1, "password100"), Arguments.of(2, "password100"),
 //			Arguments.of(3, "password100"));
@@ -63,6 +64,4 @@ public class LoginTest {
 		loginPage.enterCredentials(username, password);
 		loginPage.verifyErrorMessageIsPresent();
 	}
-
-
 }
