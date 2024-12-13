@@ -23,9 +23,4 @@ public class HomePage extends BasePage {
 	public void verifyHeaderIsPresent() {
 		Assertions.assertTrue(WaitHelpers.WaitForElementToBePresent(getDriver(), header).isDisplayed());
 	}
-	
-	
-	
-	
-	
 }

@@ -37,8 +37,4 @@ public class LoginPage extends BasePage {
 	public void verifyErrorMessageIsPresent() {
 		Assertions.assertTrue(WaitHelpers.WaitForElementToBePresent(getDriver(), messageError).isDisplayed());
 	}
-	
-	
-	
-
 }
