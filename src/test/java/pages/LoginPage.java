@@ -1,9 +1,9 @@
 package pages;
 
+import static driver.DriverFactory.getDriver;
+
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import helpers.WaitHelpers;
 
@@ -14,10 +14,6 @@ public class LoginPage extends BasePage {
 	private By passwordInput = By.cssSelector("input[name='password']");
 	private By loginButton = By.cssSelector("button");
 	private By messageError = By.cssSelector("[class*='alert--error']");
-
-	public LoginPage(WebDriver driver) {
-		super(driver);
-	}
 
 	public String getPageUrl() {
 		return pageUrl;

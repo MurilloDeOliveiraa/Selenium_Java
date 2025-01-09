@@ -1,45 +1,43 @@
 package applicationTests;
 
-import org.junit.jupiter.api.AfterEach;
+import static driver.DriverFactory.getDriver;
+import static driver.DriverFactory.killDriver;
+import static driver.DriverFactory.setUpDriver;
+
+import java.io.IOException;
+
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import pages.HomePage;
 import pages.LoginPage;
 
 public class LoginTest {
 
-	private WebDriver driver;
 	private LoginPage loginPage;
 	private HomePage homePage;
 
 	@BeforeAll
 	static void OneTimeSetUp() {
-		WebDriverManager.chromedriver().setup();
+		setUpDriver();
 	}
 
 	@BeforeEach
 	void SetUp() {
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless");
-		driver = new ChromeDriver(options);
-		driver.manage().window().maximize();
-		driver.navigate().to("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-		loginPage = new LoginPage(driver);
-		homePage = new HomePage(driver);
+		getDriver().navigate().to("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		loginPage = new LoginPage();
+		homePage = new HomePage();
 		loginPage.verifyCorrectPageUrl(loginPage.getPageUrl());
 	}
 
-	@AfterEach
-	void TearDown() {
-		driver.quit();
+	@AfterAll
+	static void TearDown(TestInfo test) throws IOException {
+		killDriver(test);
 	}
 	
 //	private static Stream<Arguments> LoginCreds() {
@@ -47,10 +45,11 @@ public class LoginTest {
 //			Arguments.of(3, "password100"));
 //}
 	
-	@DisplayName("Positive - Should login with valid credentials")
+	
 	@ParameterizedTest
-//	@MethodSource("LoginCreds")    									// Primeiro jeito de passar parametros
+//	@MethodSource("LoginCreds")    						// Primeiro jeito de passar parametros, método acima
 	@CsvSource({ "Admin, admin123" }) 					// Segundo jeito de passar parametros
+	@DisplayName("Positive - Should login with valid credentials")
 	void SuccessfulLoginTest(String username, String password) {
 		loginPage.enterCredentials(username, password);
 		homePage.verifyHeaderIsPresent();
