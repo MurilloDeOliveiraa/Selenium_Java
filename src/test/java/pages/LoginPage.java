@@ -14,6 +14,7 @@ public class LoginPage extends BasePage {
 	private By passwordInput = By.cssSelector("input[name='password']");
 	private By loginButton = By.cssSelector("button");
 	private By messageError = By.cssSelector("[class*='alert--error']");
+	private By requiredInputMessageError = By.cssSelector("div[class='oxd-form-row']:nth-child(2) span[class*='input-field-error-message']");
 
 	public String getPageUrl() {
 		return pageUrl;
@@ -32,5 +33,9 @@ public class LoginPage extends BasePage {
 	
 	public void verifyErrorMessageIsPresent() {
 		Assertions.assertTrue(WaitHelpers.WaitForElementToBePresent(getDriver(), messageError).isDisplayed());
+	}
+	
+	public void verifyRequiredErrorMessageIsPresent() {
+		Assertions.assertTrue(WaitHelpers.WaitForElementToBePresent(getDriver(), requiredInputMessageError).isDisplayed());
 	}
 }

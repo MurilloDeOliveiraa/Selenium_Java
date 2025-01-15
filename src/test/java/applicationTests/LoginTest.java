@@ -21,7 +21,7 @@ public class LoginTest extends Hooks {
 //	@MethodSource("LoginCreds")    						// Primeiro jeito de passar parametros, método acima
 	@CsvSource({ "Admin, admin123" }) 					// Segundo jeito de passar parametros
 	@DisplayName("Positive - Should login with valid credentials")
-	void SuccessfulLoginTest(String username, String password) {
+	void LoginWithValidCredentialsTest(String username, String password) {
 		loginPage.verifyCorrectPageUrl(loginPage.getPageUrl());
 		loginPage.enterCredentials(username, password);
 		homePage.verifyHeaderIsPresent();
@@ -31,8 +31,16 @@ public class LoginTest extends Hooks {
 	@DisplayName("Negative - Should not login with invalid credentials")
 	@ParameterizedTest
 	@CsvSource({"wrongUser, wrongPassword"})
-	void UnsuccessfulLogin(String username, String password) {
+	void LoginWithInvalidCredentialsTest(String username, String password) {
 		loginPage.enterCredentials(username, password);
 		loginPage.verifyErrorMessageIsPresent();
+	}
+	
+	@DisplayName("Negative - Should not login with no credentials")
+	@ParameterizedTest
+	@CsvSource({"'',''"})
+	void LoginWithoutCredentialsTest(String username, String password) {
+		loginPage.enterCredentials(username, password);
+		loginPage.verifyRequiredErrorMessageIsPresent();
 	}
 }
