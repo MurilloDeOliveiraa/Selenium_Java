@@ -45,7 +45,7 @@ public class HomePage extends BasePage {
 	}
 	
 	public void searchForASpecificMenuOption(String option) {
-		WaitHelpers.WaitForElementToBeClickable(getDriver(), searchBar);
+		WaitHelpers.WaitForElementToBePresent(getDriver(), searchBar);
 		getDriver().findElement(searchBar).sendKeys(option);
 	}
 	
