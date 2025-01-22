@@ -40,7 +40,7 @@ public class DriverFactory {
 	public static void killDriver(TestInfo test) throws IOException {
 		TakesScreenshot ss = (TakesScreenshot) getDriver();
 		File arquivo = ss.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(arquivo, new File(test.getDisplayName() + ".png"));
+		FileUtils.copyFile(arquivo, new File("screenshots/" + test.getDisplayName() + ".png"));
 		if (driver != null) {
 			getDriver().quit();
 			driver = null;

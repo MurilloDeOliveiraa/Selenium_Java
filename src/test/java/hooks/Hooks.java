@@ -1,13 +1,11 @@
-package applicationTests;
+package hooks;
 
 import static driver.DriverFactory.getDriver;
 import static driver.DriverFactory.killDriver;
-import static driver.DriverFactory.closeDriver;
 import static driver.DriverFactory.setUpDriver;
 
 import java.io.IOException;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,12 +24,12 @@ public class Hooks {
 	}
 
 	@AfterEach
-	void CloseDriver() throws IOException {
-		closeDriver();
-	}
-	
-	@AfterAll
-	static void TearDown(TestInfo test) throws IOException {
+	void CloseDriver(TestInfo test) throws IOException {
 		killDriver(test);
 	}
+	
+//	@AfterAll
+//	static void TearDown(TestInfo test) throws IOException {
+//		killDriver(test);
+//	}
 }

@@ -4,10 +4,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import hooks.Hooks;
 import pages.HomePage;
 import pages.LoginPage;
 
-public class LoginTest extends Hooks {
+public class LoginTests extends Hooks {
 
 	LoginPage loginPage = new LoginPage();
 	HomePage homePage = new HomePage();
@@ -21,9 +22,9 @@ public class LoginTest extends Hooks {
 //	@MethodSource("LoginCreds")    						// Primeiro jeito de passar parametros, método acima
 	@CsvSource({ "Admin, admin123" }) 					// Segundo jeito de passar parametros
 	@DisplayName("Positive - Should login with valid credentials")
-	void LoginWithValidCredentialsTest(String username, String password) {
+	void ShouldLoginWithValidCredentials(String username, String password) {
 		loginPage.verifyCorrectPageUrl(loginPage.getPageUrl());
-		loginPage.enterCredentials(username, password);
+		loginPage.enterCredentialsAndLogin(username, password);
 		homePage.verifyHeaderIsPresent();
 		homePage.verifyCorrectPageUrl(homePage.getPageUrl());
 	}
@@ -31,16 +32,16 @@ public class LoginTest extends Hooks {
 	@DisplayName("Negative - Should not login with invalid credentials")
 	@ParameterizedTest
 	@CsvSource({"wrongUser, wrongPassword"})
-	void LoginWithInvalidCredentialsTest(String username, String password) {
-		loginPage.enterCredentials(username, password);
+	void ShouldNotLoginWithInvalidCredentials(String username, String password) {
+		loginPage.enterCredentialsAndLogin(username, password);
 		loginPage.verifyErrorMessageIsPresent();
 	}
 	
 	@DisplayName("Negative - Should not login with no credentials")
 	@ParameterizedTest
 	@CsvSource({"'',''"})
-	void LoginWithoutCredentialsTest(String username, String password) {
-		loginPage.enterCredentials(username, password);
+	void ShouldNotLoginWithoutCredentials(String username, String password) {
+		loginPage.enterCredentialsAndLogin(username, password);
 		loginPage.verifyRequiredErrorMessageIsPresent();
 	}
 }

@@ -24,7 +24,7 @@ public class LoginPage extends BasePage {
 		getDriver().findElement(loginButton).click();
 	}
 	
-	public void enterCredentials(String email, String password) {
+	public void enterCredentialsAndLogin(String email, String password) {
 		WaitHelpers.WaitForElementToBePresent(getDriver(), loginButton);
 		getDriver().findElement(usernameInput).sendKeys(email);
 		getDriver().findElement(passwordInput).sendKeys(password);
