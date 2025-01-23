@@ -2,21 +2,19 @@ package hooks;
 
 import static driver.DriverFactory.getDriver;
 import static driver.DriverFactory.killDriver;
-import static driver.DriverFactory.setUpDriver;
 
 import java.io.IOException;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInfo;
 
 public class Hooks {
 
-	@BeforeAll
-	static void OneTimeSetUp() {
-		setUpDriver();
-	}
+//	@BeforeAll
+//	static void OneTimeSetUp() {
+//		setUpDriver();
+//	}
 
 	@BeforeEach
 	void SetUp() {
