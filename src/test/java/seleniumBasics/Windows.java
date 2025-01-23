@@ -29,7 +29,7 @@ public class Windows {
 
 	@AfterEach
 	public void TearDown() throws InterruptedException {
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		driver.quit();
 	}
 
