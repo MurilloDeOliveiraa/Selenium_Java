@@ -19,9 +19,9 @@ public class DriverFactory {
 	// cada classe
 	private static WebDriver driver;
 
-	public static void setUpDriver() {
-		WebDriverManager.chromedriver().setup();
-	}
+//	public static void setUpDriver() {
+//		WebDriverManager.chromedriver().setup();
+//	}
 	
 	public static void initializeDriver() {
 		ChromeOptions options = new ChromeOptions();
