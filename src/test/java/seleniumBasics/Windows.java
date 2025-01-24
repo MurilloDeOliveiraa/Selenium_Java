@@ -15,11 +15,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class Windows {
 	WebDriver driver;
 
-	@BeforeAll
-	static void oneTimeSetUp() {
-		WebDriverManager.chromedriver().setup();
-	}
-
 	@BeforeEach
 	public void SetUp() {
 		driver = new ChromeDriver();

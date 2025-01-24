@@ -16,38 +16,33 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Buttons {
-WebDriver driver;
-	
-	@BeforeAll
-	static void oneTimeSetUp() {
-		WebDriverManager.chromedriver().setup();
-	}
-	
+	WebDriver driver;
+
 	@BeforeEach
 	void SetUp() {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.navigate().to("https://rahulshettyacademy.com/AutomationPractice/");
 	}
-	
+
 	@AfterEach
 	void TearDown() throws InterruptedException {
 		Thread.sleep(1000);
 		driver.quit();
 	}
-	
+
 	@Test
 	public void ShouldVerifyCorrectUrl() {
 		Assertions.assertTrue(driver.getCurrentUrl().contains("/AutomationPractice"));
 	}
-	
+
 	@Test
 	@Disabled
 	public void ShouldClickOnThePrimaryButton() {
 		List<WebElement> buttons = driver.findElements(By.cssSelector(".input-group button[type='button']"));
-		
+
 		for (WebElement button : buttons) {
-			if(button.getText().equals("Dropdown")) {
+			if (button.getText().equals("Dropdown")) {
 				button.click();
 				System.out.println(button.getText());
 			}
