@@ -15,11 +15,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class JavaScripts {
 	WebDriver driver;
 
-	@BeforeAll
-	static void oneTimeSetUp() {
-		WebDriverManager.chromedriver().setup();
-	}
-
 	@BeforeEach
 	void SetUp() {
 		driver = new ChromeDriver();

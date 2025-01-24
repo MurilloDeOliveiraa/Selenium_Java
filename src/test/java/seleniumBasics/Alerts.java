@@ -15,10 +15,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class Alerts {
 	WebDriver driver;
 
-	@BeforeAll
-	static void oneTimeSetUp() {
-		WebDriverManager.chromedriver().setup();
-	}
+// NÃO É MAIS PRECISO, AGORA TEMOS O SELEMIUM MANAGER QUE JÁ FAZ O DOWNLOAD DO DRIVER MAIS RECENTE
+//	@BeforeAll
+//	static void oneTimeSetUp() {
+//		WebDriverManager.chromedriver().setup();
+//	}
 
 	@BeforeEach
 	void SetUp() {

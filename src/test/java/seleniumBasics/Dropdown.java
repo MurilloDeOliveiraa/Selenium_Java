@@ -19,11 +19,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class Dropdown {
 	WebDriver driver;
 
-	@BeforeAll
-	static void oneTimeSetUp() {
-		WebDriverManager.chromedriver().setup();
-	}
-
 	@BeforeEach
 	void SetUp() {
 		driver = new ChromeDriver();
@@ -33,7 +28,7 @@ public class Dropdown {
 
 	@AfterEach
 	void TearDown() throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(2000);
 		driver.quit();
 	}
 
@@ -48,7 +43,6 @@ public class Dropdown {
 		Select dropdown = new Select(locator);
 		dropdown.selectByVisibleText("Option2");
 		List<WebElement> selectedOptions = dropdown.getAllSelectedOptions();
-		
 		Assertions.assertEquals(1, selectedOptions.size());
 	}
 	
