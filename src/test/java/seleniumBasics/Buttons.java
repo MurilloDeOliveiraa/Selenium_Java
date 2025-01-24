@@ -3,8 +3,6 @@ package seleniumBasics;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -12,8 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
+import org.testng.Assert;
 
 public class Buttons {
 	WebDriver driver;
@@ -33,7 +30,7 @@ public class Buttons {
 
 	@Test
 	public void ShouldVerifyCorrectUrl() {
-		Assertions.assertTrue(driver.getCurrentUrl().contains("/AutomationPractice"));
+		Assert.assertTrue(driver.getCurrentUrl().contains("/AutomationPractice"));
 	}
 
 	@Test
