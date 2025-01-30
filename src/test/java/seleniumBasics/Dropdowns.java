@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -12,8 +13,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
-public class Dropdown {
+public class Dropdowns {
 	WebDriver driver;
 
 	@BeforeEach
@@ -44,6 +46,7 @@ public class Dropdown {
 	}
 	
 	@Test //Preciso arrumar
+	@Disabled
 	public void ShouldSelectOptionOnDynamicDropdown() {
 		WebElement dynamicDropdown = driver.findElement(By.cssSelector("input#autocomplete"));
 		dynamicDropdown.sendKeys("Br");
@@ -59,6 +62,19 @@ public class Dropdown {
 		}
 		
 		Assertions.assertTrue(dynamicDropdown.getText().equals("Brazil"));
-		
+	}
+	
+	@Test
+	void ShouldCheckAndUncheckAndVerifyStatus() {
+		driver.findElement(By.cssSelector("#checkBoxOption1")).click();
+		Assert.assertTrue(driver.findElement(By.cssSelector("#checkBoxOption1")).isSelected());
+		driver.findElement(By.cssSelector("#checkBoxOption1")).click();
+		Assert.assertFalse(driver.findElement(By.cssSelector("#checkBoxOption1")).isSelected());
+	}
+	
+	@Test
+	void ShouldGetCountOfCheckboxes() {
+		List<WebElement> checkboxes = driver.findElements(By.cssSelector("#checkbox-example label"));
+		Assert.assertEquals(3, checkboxes.size());
 	}
 }

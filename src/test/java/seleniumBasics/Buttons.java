@@ -29,13 +29,14 @@ public class Buttons {
 	}
 
 	@Test
-	public void ShouldVerifyCorrectUrl() {
+	void ShouldVerifyCorrectUrl() {
+		driver.findElement(By.id("")).getDomAttribute(null);
 		Assert.assertTrue(driver.getCurrentUrl().contains("/AutomationPractice"));
 	}
 
 	@Test
-	@Disabled
-	public void ShouldClickOnThePrimaryButton() {
+//	@Disabled
+	void ShouldClickOnThePrimaryButton() {
 		List<WebElement> buttons = driver.findElements(By.cssSelector(".input-group button[type='button']"));
 
 		for (WebElement button : buttons) {
