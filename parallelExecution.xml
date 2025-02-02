@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!-- Para rodar paralelo preciso declarar esses 2 parametros abaixo-->
+<suite name="Running Tests in Parallel" parallel="tests" thread-count="2">
+
+	<!-- Aqui estou definindo Globalmente, com isso todos os testes vão usar esses params-->
+	<parameter name="URL" value="https://www.google.com"/>
+	<parameter name="API_KEY" value="adshalsdaslj.ppqwiepqwie"/>
+	
+	
+	<!-- Posso rodar em paralelo no nivel dos testes-->
+  <test name="Run all Tests" parallel="true">
+    <classes>
+      <class name="applicationTestsWithTestNG.SampleTests"/>
+      <class name="applicationTestsWithTestNG.PrioritizedTests"/>
+  	</classes>
+  </test>
+</suite> 
