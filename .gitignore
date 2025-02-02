@@ -1,2 +1,6 @@
 /target/
 screenshots/
+*.png
+*.gif
+*.html
+test-output/
