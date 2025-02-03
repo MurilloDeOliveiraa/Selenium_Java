@@ -1,6 +1,5 @@
 package applicationTestsWithTestNG;
 
-import org.junit.jupiter.params.ParameterizedTest;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;

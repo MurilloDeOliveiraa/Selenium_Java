@@ -7,6 +7,11 @@
 		</run>
 	</groups>
 	
+	<!-- Preciso declarar onde ta o Listener dos testes, se não não vai executa-lo-->
+	<listeners>
+		<listener class-name="applicationTestsWithTestNG.TestsListeners"/>
+	</listeners>
+	
   <test name="Run Smoke Tests">
     <classes>
       <class name="applicationTestsWithTestNG.PrioritizedTests"/>      
