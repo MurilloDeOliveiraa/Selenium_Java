@@ -38,4 +38,12 @@ public class JavaScripts {
 		js.executeScript("window.scrollBy(0, arguments[0])", brokenLink.getLocation().toString());
 		brokenLink.click();
 	}
+	
+	@Test
+	public void ScrollOnSpecificElementtWithJS() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,500)");
+		Thread.sleep(3000);
+		js.executeScript("document.querySelector('.tableFixHead').scrollBy(0, 500)");
+	}
 }
