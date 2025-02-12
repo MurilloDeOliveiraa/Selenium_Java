@@ -46,4 +46,13 @@ public class Buttons {
 			}
 		}
 	}
+	
+	@Test
+	void ShouldGetElementDimensions() {
+		WebElement countriesInput = driver.findElement(By.cssSelector("input#autocomplete"));
+		System.out.println(countriesInput.getRect().getHeight());
+		System.out.println(countriesInput.getRect().getWidth());
+		System.out.println(countriesInput.getRect().getDimension());
+		
+	}
 }

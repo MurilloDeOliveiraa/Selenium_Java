@@ -3,7 +3,6 @@ package seleniumBasics;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.net.URLConnection;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -11,9 +10,11 @@ import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TakeScreenshotsAndHTTPConnection {
@@ -37,6 +38,14 @@ public class TakeScreenshotsAndHTTPConnection {
 		TakesScreenshot ss = (TakesScreenshot)driver;
 		File arquivoSrc = ss.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(arquivoSrc, new File("C://Users/Murillo/eclipse-workspace/Curso_Udemy_Selenium/screenshots/screenshot.png"));
+	}
+	
+	@Test
+	void TakeScreenshotOfWebElement() throws IOException {
+		WebElement searchInput = driver.findElement(By.cssSelector("[name='q']"));
+		searchInput.sendKeys("São Paulo FC");
+		File arquivoSrc = searchInput.getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(arquivoSrc, new File("C://Users/Murillo/eclipse-workspace/Curso_Udemy_Selenium/screenshots/screenshotOfElement.png"));
 	}
 	
 	@Test
