@@ -38,6 +38,6 @@ public class Alerts {
 		Alert alert = driver.switchTo().alert();
 		System.out.println(alert.getText());
 		alert.accept();
-		
+		// test comment
 	}
 }
